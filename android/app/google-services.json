@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "707613648843",
+    "project_id": "socialtutorial-82452",
+    "storage_bucket": "socialtutorial-82452.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707613648843:android:4953bf056a26b8f3ecb84e",
+        "android_client_info": {
+          "package_name": "com.example.social_media"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXQY2Sk8X-cNZdawRLL_hUf7HTQ4p6N6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
