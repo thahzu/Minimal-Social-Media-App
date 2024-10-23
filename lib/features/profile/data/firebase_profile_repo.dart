@@ -19,10 +19,10 @@ class FirebaseProfileRepo implements ProfileRepo{
         if(userData != null){
           return ProfileUser(
               uid: uid,
-              email: userData['email'],
-              name: userData['name'],
-              bio: userData['bio'],
-              profileImageUrl: userData['profileImageUrl'].toString(),
+              email: userData['email'] ,
+              name: userData['name'] ,
+              bio: userData['bio']?? '',
+              profileImageUrl: userData['profileImageUrl'].toString() ,
           );
         }
       }
@@ -46,7 +46,7 @@ class FirebaseProfileRepo implements ProfileRepo{
       });
     }
     catch (e){
-      throw Exception(e);
+      throw Exception('Error updating user profile: $e');
     }
   }
 }
