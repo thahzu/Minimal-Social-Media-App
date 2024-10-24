@@ -4,6 +4,8 @@ import 'package:social_media/app.dart';
 import 'package:social_media/features/auth/presentation/cubits/auth_cubit.dart';
 import 'package:social_media/features/home/presentation/component/my_drawer_tile.dart';
 import 'package:social_media/features/profile/presentation/pages/profile_page.dart';
+import 'package:social_media/features/search/presentation/pages/search_page.dart';
+import 'package:social_media/features/setting/pages/setting_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -16,74 +18,83 @@ class MyDrawer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
-          children: [
-
-            // logo
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0),
-              child: Icon(
-                Icons.person,
-                size: 80,
-                color: Theme.of(context).colorScheme.primary,
+            children: [
+              // logo
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 50.0),
+                child: Icon(
+                  Icons.person,
+                  size: 80,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
-            ),
 
-            // divider line
-            Divider(color: Theme.of(context).colorScheme.secondary,
-            ),
-            // home title
-            MyDrawerTile(
+              // divider line
+              Divider(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+              // home title
+              MyDrawerTile(
                 title: "HOME",
                 icon: Icons.home,
                 onTap: () => Navigator.of(context).pop(),
-            ),
+              ),
 
-            // profile tile
-            MyDrawerTile(
-                title: "PROFILE",
-                icon: Icons.person,
-                onTap: (){
-                  //pop menu drawer
-                  Navigator.of(context).pop();
+              // profile tile
+              MyDrawerTile(
+                  title: "PROFILE",
+                  icon: Icons.person,
+                  onTap: () {
+                    //pop menu drawer
+                    Navigator.of(context).pop();
 
-                  // get current user id
-                  final user = context.read<AuthCubit>().currentUser;
-                  String? uid = user!.uid;
+                    // get current user id
+                    final user = context.read<AuthCubit>().currentUser;
+                    String? uid = user!.uid;
 
-                  // navigate to profile page
-                  Navigator.push(context,
-                    MaterialPageRoute(
+                    // navigate to profile page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
                         builder: (context) => ProfilePage(uid: uid),
-                    ),
-                  );
-                }
-            ),
+                      ),
+                    );
+                  }),
 
-            // search tile
-            MyDrawerTile(
+              // search tile
+              MyDrawerTile(
                 title: "SEARCH",
                 icon: Icons.search,
-                onTap: (){}
-            ),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchPage(),
+                  ),
+                ),
+              ),
 
-            // settings tile
-            MyDrawerTile(
-                title: "SETTING",
-                icon: Icons.settings,
-                onTap: (){}
-            ),
+              // settings tile
+              MyDrawerTile(
+                  title: "SETTING",
+                  icon: Icons.settings,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingPage(),
+                    ),
+                  ),
+              ),
 
-            const Spacer(),
+              const Spacer(),
 
-            // logout tile
-            MyDrawerTile(
+              // logout tile
+              MyDrawerTile(
                 title: "LOGOUT",
                 icon: Icons.login,
-                onTap: () =>context.read<AuthCubit>().logout(),
-            ),
-
-          ],
-                ),
+                onTap: () => context.read<AuthCubit>().logout(),
+              ),
+            ],
+          ),
         ),
       ),
     );

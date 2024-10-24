@@ -5,6 +5,7 @@ import 'package:social_media/features/post/presentation/components/post_tile.dar
 import 'package:social_media/features/post/presentation/cubits/post_cubit.dart';
 import 'package:social_media/features/post/presentation/cubits/post_states.dart';
 import 'package:social_media/features/post/presentation/pages/upload_post_page.dart';
+import 'package:social_media/responsive/constrained_scaffold.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,9 +42,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ConstrainedScaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("INSTAGRAM"),
         foregroundColor: Theme.of(context).colorScheme.primary,
         actions: [
           IconButton(
